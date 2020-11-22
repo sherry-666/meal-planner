@@ -1,3 +1,6 @@
 __pycache__/*
 .idea/*
 venv/*
+config.json
+frontend/node_modules/*
+**/__pycache__/*

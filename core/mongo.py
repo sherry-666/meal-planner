@@ -1,16 +1,12 @@
 from mongoengine import connect
 
-def initialize_mongo():
-    # client = pymongo.MongoClient(
-    #     "mongodb+srv://admin:<password>@cluster0.yrmdx.mongodb.net/<dbname>?retryWrites=true&w=majority")
-    # db = client.test
-
+def initialize_mongo(mongo_config):
     connect(
         host = "mongodb+srv://cluster0.yrmdx.mongodb.net/?retryWrites=true&w=majority",
-        username = "admin",
-        password = "sherryjing",
+        username = mongo_config["username"],
+        password = mongo_config["password"],
         db = "meal_planer",
     )
 
-    print("conenect successfully")
+    print("Connected to Mongo...")
 
