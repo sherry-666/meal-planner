@@ -1,0 +1,19 @@
+{
+  "reciepe": [
+    {
+      "id": 1,
+     "name": "Chicken with Broccoli",
+     "ingredients": [
+      "chicken breast",
+      "broccoli"
+      ]
+    },
+  {
+    "id": 2,
+    "name": "Broiled Broccoli",
+    "ingredients": [
+      "broccoli"
+    ]
+  }
+  ]
+}

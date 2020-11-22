@@ -1,2 +1,4 @@
+#display meals to select
+@app.route('/plan-meals')
 def get_meals():
-    return [Meal(...).to_dict()]
+    return 'Plan Meals'

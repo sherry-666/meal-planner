@@ -1,0 +1,31 @@
+<!doctype html>
+
+<header>
+    <title>{% block title %}{% endblock %} Grocery List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='grocery_list.css') }}">
+
+</header>
+<nav>
+  <h1>Grocery List</h1>
+</nav>
+<section class="groceryList">
+    <div id="myDIV" class="header">
+        <h2>Grocery List</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+      <li>Egg</li>
+      <li>Tomato</li>
+      <li>Broccoli</li>
+      <li>Onion</li>
+    </ul>
+
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script type="text/javascript"
+         src="{{ url_for('static', filename='grocery_list.js') }}"></script>
