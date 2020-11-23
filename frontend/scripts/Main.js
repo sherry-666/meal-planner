@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import M from 'materialize-css';
+import Ingredient from "./page/Ingredient";
 
 export default function App() {
   return (
@@ -19,10 +20,10 @@ export default function App() {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/recipe">Recipe</Link>
                 </li>
                 <li>
-                  <Link to="/users">Users</Link>
+                  <Link to="/ingredient">Ingredient</Link>
                 </li>
               </ul>
             </div>
@@ -32,11 +33,11 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/recipe">
+            <Recipe />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/ingredient">
+            <Ingredient />
           </Route>
           <Route path="/">
             <Home />
@@ -51,10 +52,6 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
+function Recipe() {
+  return <h2>Recipe</h2>;
 }
