@@ -12,26 +12,13 @@ def create_app(test_config = None):
     app = Flask(
         __name__,
         template_folder="frontend/templates",
-        static_folder="frontend/dist",
+        static_folder="frontend/static",
     )
-
-    @app.route("/")
-    def react():
-        return render_template("base.html")
-
-    @app.route("/bundle.js")
-    def dist_file():
-        return app.send_static_file("bundle.js")
-
-    # a simple page that says hello
-    @app.route("/home")
-    def hello():
-        return "Home Page"
 
     from api import generate_grocery_list
     app.register_blueprint(generate_grocery_list.bp)
 
-    @app.route("/ingredient-library")
+    @app.route("/api/ingredient/display")
     def get_ingredient():
         from document.ingredient import Ingredient
         ingredients = Ingredient.get_ingredients()
@@ -51,5 +38,10 @@ def create_app(test_config = None):
         recipe = Meal(name,serving,1,1,ingredients,"non",1,"sweet",'None',2)
         recipe.save()
         return ('ok')
+
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def react(path):
+        return render_template("base.html")
 
     return app

@@ -11,7 +11,7 @@ from flask import (
 
 bp = Blueprint('grocery-list', __name__, url_prefix='/grocery-list')
 
-@bp.route('/list-display')
+@bp.route('/display')
 #display list
 def display_grocery_list():
 

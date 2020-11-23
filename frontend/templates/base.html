@@ -2,5 +2,10 @@
   
 <div id="react-root"></div>
   
-<script src="bundle.js"></script>
+<script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
 {% endblock %}
