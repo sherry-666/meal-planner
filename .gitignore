@@ -4,4 +4,4 @@ venv/*
 config.json
 frontend/node_modules/*
 **/__pycache__/*
-frontend/dist/*
+frontend/static/dist/*
