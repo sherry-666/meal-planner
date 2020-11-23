@@ -1,11 +1,14 @@
 from flask import jsonify, Flask, render_template, url_for, json,request
 from core.mongo import initialize_mongo
 from document.ingredient import Ingredient
+import json
 
 
 def create_app(test_config = None):
     #create and configure the app
-    initialize_mongo()
+    with open('config.json') as f:
+        config = json.load(f)
+    initialize_mongo(config["mongo_config"])
     app = Flask(__name__)
 
     # a simple page that says hello
