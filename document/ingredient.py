@@ -1,6 +1,6 @@
 from mongoengine import *
 
-class Ingredient(Document):
+class Ingredient(EmbeddedDocument):
     name = StringField(required=True)
     measurement = StringField(required=True)
     quantity = IntField(required=True)

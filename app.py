@@ -40,15 +40,16 @@ def create_app(test_config = None):
             buffer += ingredient.display()
         return buffer
 
-    @app.route("/ingredient-library/add")
-    def add_ingredient():
-        from document.ingredient import Ingredient
+    @app.route("/recipe/add")
+    def add_recipe():
+        from document.meal import Meal
         name = request.args.get("name")
-        measurement = request.args.get("measurement")
-        quantity = int(request.args.get("quantity"))
-        ingredient = Ingredient(name,measurement,quantity)
-        ingredient.save()
-        return ("ok")
-
+        serving = int(request.args.get("serving"))
+        ingredient1 = Ingredient("apple","lb",1)
+        ingredient2 = Ingredient("pear","lb",1)
+        ingredients = [ingredient1,ingredient2]
+        recipe = Meal(name,serving,1,1,ingredients,"non",1,"sweet",'None',2)
+        recipe.save()
+        return ('ok')
 
     return app
