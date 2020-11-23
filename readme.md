@@ -24,3 +24,10 @@ Create `config.json` file uder root dir:
   }
 }
 ```
+
+## Build React
+```
+cd frontend
+npm install
+
+```
