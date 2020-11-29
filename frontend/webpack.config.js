@@ -5,6 +5,7 @@ const config = {
         path: __dirname + '/static/dist',
         filename: 'bundle.js',
     },
+    watch: true,
     resolve: {
         extensions: ['.js', '.jsx', '.css']
     },

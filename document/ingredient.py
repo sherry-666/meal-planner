@@ -6,13 +6,15 @@ class Ingredient(EmbeddedDocument):
     quantity = IntField(required=True)
 
     #constructor
-    def __init__(self, name, measurement, quantity=1):
+    def __init__(self, name, measurement,quantity=1):
         super().__init__()
         self.name = name
         self.measurement = measurement
         if quantity < 0:
             raise Exception("quantity can not be negative")
         self.quantity = quantity
+
+
 
     #define this document is on global level
     @staticmethod
