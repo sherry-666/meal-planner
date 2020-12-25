@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import M from 'materialize-css';
 import Ingredient from "./page/Ingredient";
+import Login from "./page/Login";
 
 export default function App() {
   return (
@@ -25,6 +26,9 @@ export default function App() {
                 <li>
                   <Link to="/ingredient">Ingredient</Link>
                 </li>
+                <li>
+                  <Link to="/login">Log In</Link>
+                </li>
               </ul>
             </div>
         </nav>
@@ -38,6 +42,9 @@ export default function App() {
           </Route>
           <Route path="/ingredient">
             <Ingredient />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/">
             <Home />

@@ -15,7 +15,7 @@ Install from requirement
 pip3 install -r requirement.txt
 ```
 
-Create `config.json` file uder root dir:
+Create `config.json` file under root dir:
 ```
 {
   "mongo_config": {
@@ -30,4 +30,9 @@ Create `config.json` file uder root dir:
 cd frontend
 npm install
 
+```
+## Start Frontend
+```
+cd frontend
+npm run build
 ```

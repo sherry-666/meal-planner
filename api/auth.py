@@ -1,6 +1,6 @@
-#generate grocery list
-#input: selected meals
-#ingredient aggregation
+#authentication validation
+#input: username & password
+
 
 import functools
 
@@ -9,7 +9,7 @@ from flask import (
 )
 
 
-bp = Blueprint('grocery-list', __name__, url_prefix='/grocery-list')
+bp = Blueprint('login', __name__, url_prefix='/grocery-list')
 
 @bp.route('/display')
 #display list
