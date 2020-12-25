@@ -1,11 +1,10 @@
-from flask import Blueprint, jsonify, json,request
+from flask import Blueprint, jsonify, json, request
 from document.ingredientMacros import IngredientMacros
 
 ingredient_bp = Blueprint("ingredient", __name__, url_prefix="/api/ingredient")
 
 @ingredient_bp.route("/add")
 def add_ingredient():
-    from document.ingredientMacros import IngredientMacros
     name = request.args.get("name")
     measurement = request.args.get("measurement")
     carbs = float(request.args.get("carbs"))
