@@ -1,19 +1,24 @@
 #authentication validation
-#input: username & password
+from flask import Blueprint, request, jsonify
+import json
+
+auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
+
+@auth_bp.route("/login", methods=["POST"])
+def login():
+    user_info = json.loads(request.data)
+    username = user_info.get("username")
+    password = user_info.get("password")
+    print(username, password)
+    # TODO: Add username password verification
+    return jsonify({
+        "success": True
+    })
+
+@auth_bp.route("/register")
+def register():
+
+    return "Registration Successful"
 
 
-import functools
-
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
-)
-
-
-bp = Blueprint('login', __name__, url_prefix='/grocery-list')
-
-@bp.route('/display')
-#display list
-def display_grocery_list():
-
-    return render_template('function/grocery_list.html')
 
