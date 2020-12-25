@@ -15,9 +15,8 @@ export default function Login() {
 
     function logIn(e) {
         e.preventDefault();
-        console.log(username,password);
 		fetch(
-		  "http://localhost:5000/api/auth/login",
+		  "api/auth/login",
 		  {
 		    method: "POST",
 		    body: JSON.stringify({

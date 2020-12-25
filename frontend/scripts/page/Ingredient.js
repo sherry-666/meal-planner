@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 export default function Ingredient() {
     const [ingredients, setIngredients] = useState([])
     useEffect(() => {
-		fetch("http://localhost:5000/api/ingredient/get")
+		fetch("api/ingredient/get")
 		  .then(res => res.json())
 		  .then(
 			(result) => {
