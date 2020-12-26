@@ -30,6 +30,7 @@ export default function Login() {
 		 .then(
 			(result) => {
 			  if (result.success) {
+			    history.go(0)
 			    history.push("/home");
 			  }
 			  //TODO: send alert on log in failed
