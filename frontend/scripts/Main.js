@@ -10,7 +10,7 @@ import Ingredient from "./page/Ingredient";
 import Login from "./page/Login";
 import Register from "./page/register";
 
-export default function App() {
+export default function App(props) {
   return (
     <Router>
       <div>
@@ -18,21 +18,29 @@ export default function App() {
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">Logo</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/recipe">Recipe</Link>
-                </li>
-                <li>
-                  <Link to="/ingredient">Ingredient</Link>
-                </li>
-                <li>
-                  <Link to="/login">Log In</Link>
-                </li>
-                <li>
-                  <Link to="/register">Register</Link>
-                </li>
+                {
+                  props.user ?
+                  <>
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link to="/recipe">Recipe</Link>
+                    </li>
+                    <li>
+                      <Link to="/ingredient">Ingredient</Link>
+                    </li>
+                  </>
+                 :
+                  <>
+                    <li>
+                      <Link to="/login">Log In</Link>
+                    </li>
+                    <li>
+                      <Link to="/register">Register</Link>
+                    </li>
+                  </>
+                }
               </ul>
             </div>
         </nav>
@@ -54,7 +62,7 @@ export default function App() {
             <Register />
           </Route>
           <Route path="/">
-            <Home />
+            <Home user={props.user}/>
           </Route>
         </Switch>
       </div>
@@ -62,8 +70,8 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function Home(props) {
+  return <h2>Home Page. Hello {props.user ? ` ,${props.user.username}` : ""}</h2>;
 }
 
 function Recipe() {
