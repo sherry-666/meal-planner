@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 
 export default function Login() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    let history = useHistory();
 
     function onUsernameChange(e) {
         setUsername(e.target.value)
@@ -27,9 +29,13 @@ export default function Login() {
 		).then(res => res.json())
 		 .then(
 			(result) => {
-			  console.log(result)
+			  if (result.success) {
+			    history.push("/home");
+			  }
+			  //TODO: send alert on log in failed
 			},
 			(error) => {
+			  //TODO: send alert on log in failed
 			  console.log(error)
 			}
 		  )

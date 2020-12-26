@@ -1,6 +1,6 @@
 {% block app_content %}
   
-<div id="react-root"></div>
+<div id="react-root" data-user="{{logged_in_user}}"></div>
   
 <script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
 
