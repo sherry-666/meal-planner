@@ -21,6 +21,9 @@ Create `config.json` file under root dir:
   "mongo_config": {
     "username": "...",
     "password": "..."
+  },
+  "flask": {
+    "secret_key" : "..."
   }
 }
 ```
