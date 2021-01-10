@@ -96,7 +96,7 @@ export default function AddFamilyMember(props) {
                         type="text" id="activity_level" class="validate"
                         value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}
                       />
-                      <label for="activity_level">Activity Level</label>
+                      <label for="activity_level">Activity Level</label> //test branch function
                     </div>
                   </div>
                   <div class="row">
