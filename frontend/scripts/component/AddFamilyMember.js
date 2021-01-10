@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import M from "materialize-css";
 
 export default function AddFamilyMember(props) {
     const [name, setName] = useState()
@@ -9,7 +9,10 @@ export default function AddFamilyMember(props) {
     const [height, setHeight] = useState()
     const [activityLevel, setActivityLevel] = useState()
     const [foodAllergy, setFoodAllergy] = useState()
-
+    const activityLevelSelect = useRef()
+    useEffect(() => {
+        M.FormSelect.init(activityLevelSelect.current)
+    })
 
     function saveMember(e) {
         fetch(
@@ -90,13 +93,21 @@ export default function AddFamilyMember(props) {
                       <label for="height">Height (cm)</label>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input
-                        type="text" id="activity_level" class="validate"
-                        value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}
-                      />
-                      <label for="activity_level">Activity Level</label> //test branch function
+                  <div class = "row">
+                    <div class="input-field col s12" >
+                        <select
+                            class="select"
+                            ref={activityLevelSelect}
+                            value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}
+                        >
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">1 Little</option>
+                          <option value="2">2 Light</option>
+                          <option value="3">3 Moderate</option>
+                          <option value="4">4 Active</option>
+                          <option value="5">5 Extra Active</option>
+                        </select>
+                        <label>Activity Level</label>
                     </div>
                   </div>
                   <div class="row">
