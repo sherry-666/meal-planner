@@ -9,9 +9,12 @@ export default function AddFamilyMember(props) {
     const [height, setHeight] = useState()
     const [activityLevel, setActivityLevel] = useState()
     const [foodAllergy, setFoodAllergy] = useState()
+    const [gender, setGender] = useState()
     const activityLevelSelect = useRef()
+    const genderSelect = useRef()
     useEffect(() => {
-        M.FormSelect.init(activityLevelSelect.current)
+        M.FormSelect.init(activityLevelSelect.current);
+        M.FormSelect.init(genderSelect.current)
     })
 
     function saveMember(e) {
@@ -25,6 +28,8 @@ export default function AddFamilyMember(props) {
                   yearOfBirth,
                   weight,
                   height,
+                  gender,
+                  activityLevel
                 })
               }
             ).then(res => res.json())
@@ -94,7 +99,19 @@ export default function AddFamilyMember(props) {
                     </div>
                   </div>
                   <div class = "row">
-                    <div class="input-field col s12" >
+                    <div class="input-field col s6" >
+                        <select
+                            class="select"
+                            ref={genderSelect}
+                            value={gender} onChange={(e) => setGender(e.target.value)}
+                        >
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Female</option>
+                          <option value="2">Male</option>
+                        </select>
+                        <label>Gender</label>
+                    </div>
+                    <div class="input-field col s6" >
                         <select
                             class="select"
                             ref={activityLevelSelect}

@@ -41,11 +41,15 @@ export default function Profile(props) {
                 "weight": 106,
                 "height": 186,
                 "year_of_birth":1994,
+                "gender": 1,
+                "activity_level":1,
                 "food allergy":[""]
                 }, {
                 "name": "Sherry",
                 "weight": 63,
                 "height": 168,
+                "gender": 1,
+                "activity_level":1,
                 "year_of_birth":1994,
                 "food_allergy":["peanut"]
                 }])
