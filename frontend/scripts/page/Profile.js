@@ -2,14 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import FamilyMember from "../component/FamilyMember.js";
 import AddFamilyMember from "../component/AddFamilyMember.js";
 import M from "materialize-css";
+import { useHistory } from "react-router-dom";
 
-export default function Profile() {
+export default function Profile(props) {
+    if (!props.user) {
+        let history = useHistory()
+        history.push("/home")
+    } else {
+    //get username to pull profile.
+    }
     const [profile, setProfile] = useState()
     const [familyMembers, setFamilyMembers] = useState([])
     const profileModal = useRef()
     useEffect(() => {
         M.Modal.init(profileModal.current)
     })
+
 
     useEffect(() => {
 		fetch("api/profile")
@@ -45,6 +53,7 @@ export default function Profile() {
 
 
     console.log(profile)
+
     if (profile) {
         return <div class = "row">
             <div class="col s10 offset-s1" >
@@ -55,21 +64,12 @@ export default function Profile() {
                         <ul class="collection" >
                             {familyMembers.map((member) => <FamilyMember member= {member}/>)}
                         </ul>
-                        <button data-target="modal1" class="btn modal-trigger">
+                        <button data-target="add-family-modal" class="btn modal-trigger">
                             <i class="material-icons">add</i>
                         </button>
-                        <div id="modal1" class="modal" ref={profileModal}>
-                            <div class="modal-content">
-                              <AddFamilyMember />
-                            </div>
-                            <div class="modal-footer">
-                              <button class="btn waves-effect waves-light" type="submit" name="action">
-                                Add Member
-                                <i class="material-icons right">save</i>
-                              </button>
-                            </div>
+                        <div id="add-family-modal" class="modal" ref={profileModal}>
+                            <AddFamilyMember user={props.user}/>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ export default function App(props) {
             <Register />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile user={props.user}/>
           </Route>
           <Route path="/">
             <Home user={props.user}/>

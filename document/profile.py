@@ -23,7 +23,6 @@ class FamilyMember(EmbeddedDocument):
         ActivityLevel.active: 1.725,
         ActivityLevel.extra_active: 1.9,
     }
-
     name = StringField(required=True)
     year_of_birth = IntField(required=True)
     gender = IntField(required=True, choices=list(map(int, Gender)))
@@ -47,7 +46,7 @@ class FamilyMember(EmbeddedDocument):
         today = datetime.datetime.now()
         this_year = today.year
         age = this_year - self.year_of_birth
-        if self.gender == "female":
+        if self.gender == self.Gender.Female:
             bmr = 655 + ((4.3 * self.weight) / 2.205) + ((4.7 * self.height) * 2.54) - (4.7 * age)
         else:
             bmr = 66 + ((6.3 * self.weight) / 2.205) + ((12.9 * self.height) * 2.54) - (6.8 * age)
@@ -58,13 +57,15 @@ class FamilyMember(EmbeddedDocument):
 
 
 class Profile(Document):
-    family_name = StringField(required=True)
+    username = StringField(required=True, primary_key=True)
+    family_name = StringField(required=False)
     family_members = ListField(EmbeddedDocumentField(FamilyMember))
-    total_cal = IntField(required=True)
+    total_cal = IntField(required=False)
 
     # constructor
-    def __init__(self, family_name, family_members):
+    def __init__(self, username, family_name=None, family_members=[]):
         super().__init__()
+        self.username = username
         self.family_name = family_name
         self.family_members = family_members
 
