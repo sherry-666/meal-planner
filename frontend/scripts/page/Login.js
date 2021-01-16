@@ -30,10 +30,11 @@ export default function Login() {
 		 .then(
 			(result) => {
 			  if (result.success) {
-			    history.go(0)
 			    history.push("/home");
+			    history.go(0);
+			  }else{
+			    M.toast({html: 'Password or Username is not correct'})
 			  }
-			  //TODO: send alert on log in failed
 			},
 			(error) => {
 			  //TODO: send alert on log in failed
