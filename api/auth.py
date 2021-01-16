@@ -2,7 +2,9 @@
 from flask import Blueprint, request, jsonify
 from document.userAuth import UserAuth
 import json
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user, login_required
+from mongoengine import DoesNotExist
+
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -11,19 +13,32 @@ def login():
     user_info = json.loads(request.data)
     username = user_info.get("username")
     password = user_info.get("password")
-    user = UserAuth.objects.get(username=username)
-    # TODO: encrypt password
-    if password != user.password:
+    #user = UserAuth.objects.get(username=username)
+
+    try:
+        user = UserAuth.objects.get(username=username)
+        if password != user.password:
+            return jsonify({
+                "success": False
+            })
+        login_user(user, remember=True)
+        return jsonify({
+            "success": True
+        })
+    except DoesNotExist:
         return jsonify({
             "success": False
         })
-    print(current_user)
-    login_user(user, remember=True)
-    print(current_user)
-    print("user log in !!!")
+
+
+@auth_bp.route("/logout", methods=["GET"])
+@login_required
+def logout():
+    logout_user()
     return jsonify({
-        "success": True
+        "logout": True
     })
+
 
 @auth_bp.route("/register", methods=["POST"])
 def register():

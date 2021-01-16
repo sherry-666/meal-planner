@@ -8,8 +8,9 @@ import {
 import M from 'materialize-css';
 import Ingredient from "./page/Ingredient";
 import Login from "./page/Login";
-import Register from "./page/register";
-import Profile from "./page/profile";
+import Logout from "./page/Logout";
+import Register from "./page/Register";
+import Profile from "./page/Profile";
 
 export default function App(props) {
   return (
@@ -33,6 +34,9 @@ export default function App(props) {
                     </li>
                     <li>
                       <Link to="/ingredient">Ingredient</Link>
+                    </li>
+                    <li>
+                      <Link to="/logout">Logout</Link>
                     </li>
                   </>
                  :
@@ -61,6 +65,9 @@ export default function App(props) {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/logout">
+            <Logout />
           </Route>
           <Route path="/register">
             <Register />
