@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, json, request
 from lib.profile import get_or_create_profile, initiate_family_member
+from document.profile import Profile
 from mongoengine import *
 from enum import IntEnum
 
@@ -25,3 +26,14 @@ def add_family_member():
     return jsonify({
         "success": True
     })
+
+
+@profile_bp.route("/get", methods=["GET"])
+def get_profile():
+    print(request.args.get('username', ''))
+    username = request.args.get('username', '')
+    profile = Profile.objects.get(username=username)
+    print(profile)
+    profile_json = profile.to_json()
+    profile_data = json.loads(profile_json)
+    return jsonify(profile_data)

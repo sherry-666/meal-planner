@@ -42,6 +42,7 @@ export default function AddFamilyMember(props) {
                 }
               )
         console.log ('save')
+        M.toast({html: 'Member Added'})
     }
 
     function onYearOfBirthBlur(e) {
