@@ -1,19 +1,19 @@
-#authentication validation
+# authentication validation
 from flask import Blueprint, request, jsonify
 from document.userAuth import UserAuth
 import json
 from flask_login import login_user, current_user, logout_user, login_required
 from mongoengine import DoesNotExist
 
-
 auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
+
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
     user_info = json.loads(request.data)
     username = user_info.get("username")
     password = user_info.get("password")
-    #user = UserAuth.objects.get(username=username)
+    # user = UserAuth.objects.get(username=username)
 
     try:
         user = UserAuth.objects.get(username=username)
