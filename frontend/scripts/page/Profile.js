@@ -18,45 +18,28 @@ export default function Profile(props) {
         M.Modal.init(profileModal.current)
     })
 
-
     useEffect(() => {
-		fetch("api/profile")
-		  .then(res => res.json())
+        console.log("api/profile/get?username=" + props.user.username)
+		fetch(
+		    "api/profile/get?username=" + props.user.username,
+		)
+		  .then(res => {
+		            console.log("returning response in json")
+		            return res.json()
+		  })
 		  .then(
 			(result) => {
+			  console.log("this is received profile")
 			  console.log(result)
 			  setProfile(result)
+			  setFamilyMembers(result.family_members)
 			},
 			(error) => {
 			  console.log(error)
 			}
 		  )
-		setProfile({
-            "family_name": "JJ",
-             "total_cal" : 1000
-        })
-        setFamilyMembers([
-                {
-                "name": "Jing",
-                "weight": 106,
-                "height": 186,
-                "year_of_birth":1994,
-                "gender": 1,
-                "activity_level":1,
-                "food allergy":[""]
-                }, {
-                "name": "Sherry",
-                "weight": 63,
-                "height": 168,
-                "gender": 1,
-                "activity_level":1,
-                "year_of_birth":1994,
-                "food_allergy":["peanut"]
-                }])
     }, [])
 
-
-    console.log(profile)
 
     if (profile) {
         return <div class = "row">

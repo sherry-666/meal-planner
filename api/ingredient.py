@@ -3,6 +3,7 @@ from document.ingredientMacros import IngredientMacros
 
 ingredient_bp = Blueprint("ingredient", __name__, url_prefix="/api/ingredient")
 
+
 @ingredient_bp.route("/add")
 def add_ingredient():
     name = request.args.get("name")
