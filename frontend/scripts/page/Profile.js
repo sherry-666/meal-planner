@@ -14,8 +14,11 @@ export default function Profile(props) {
     const [profile, setProfile] = useState()
     const [familyMembers, setFamilyMembers] = useState([])
     const profileModal = useRef()
+    var profileModalInstance
+
+    const profileModalClose = () => {profileModalInstance.close()}
     useEffect(() => {
-        M.Modal.init(profileModal.current)
+        profileModalInstance = M.Modal.init(profileModal.current)
     })
 
     useEffect(() => {
@@ -55,7 +58,7 @@ export default function Profile(props) {
                             <i class="material-icons">add</i>
                         </button>
                         <div id="add-family-modal" class="modal" ref={profileModal}>
-                            <AddFamilyMember user={props.user}/>
+                            <AddFamilyMember user={props.user} closeModal={profileModalClose}/>
                         </div>
                     </div>
                 </div>

@@ -41,8 +41,10 @@ export default function AddFamilyMember(props) {
                   console.log(error)
                 }
               )
+
         console.log ('save')
         M.toast({html: 'Member Added'})
+        props.closeModal()
     }
 
     function onYearOfBirthBlur(e) {
